@@ -1,0 +1,16 @@
+<!-- templates/watch.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ content.title }} - Watch</title>
+</head>
+<body>
+    <h1>Now Watching: {{ content.title }}</h1>
+    <p><strong>Genre:</strong> {{ content.genre }}</p>
+    <p><strong>Description:</strong> {{ content.description }}</p>
+
+    <p><em>Enjoy your show!</em></p>
+    <a href="{{ url_for('browse') }}">Back to Browse</a>
+</body>
+</html>

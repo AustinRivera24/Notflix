@@ -1,0 +1,22 @@
+<!-- templates/browse.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse - Notflix</title>
+</head>
+<body>
+    <h1>Browse Content</h1>
+    <ul>
+        {% for item in content %}
+            <li>
+                <strong>{{ item.title }}</strong> - {{ item.genre }} <br>
+                <a href="{{ url_for('watch', content_id=item.id) }}">Watch Now</a>
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>
