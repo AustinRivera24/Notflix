@@ -1,0 +1,18 @@
+<!-- templates/home.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Noflix</title>
+</head>
+<body>
+    <h1>Welcome to Notflix</h1>
+    <ul>
+        {% for item in content %}
+            <li>
+                <a href="{{ url_for('watch', content_id=item.id) }}">{{ item.title }}</a> - {{ item.genre }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
