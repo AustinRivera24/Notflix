@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session, flash
+from flask import Flask, render_template, redirect, url_for, request, session, flash, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
@@ -7,7 +7,7 @@ from models import db, User, Content, WatchHistory
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///movies.db'
 
 # Initialize db with the app
 db.init_app(app)
@@ -72,6 +72,13 @@ def watch(content_id):
         db.session.add(watch_entry)
         db.session.commit()
     return render_template('watch.html', content=content)
+
+
+
+@app.route('/poster_img/<path:filename>')
+def poster_img(filename):
+    return send_from_directory('poster_img', filename)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

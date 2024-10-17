@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Browse - Notflix</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <h1>Browse Content</h1>
-    <ul>
+    <ul style="list-style-type: none;">
         {% for item in content %}
             <li>
+                <img src="{{ url_for('poster_img', filename=item.poster_url) }}" alt="{{ item.title }} poster" width="100">
+
                 <strong>{{ item.title }}</strong> - {{ item.genre }} <br>
                 <a href="{{ url_for('watch', content_id=item.id) }}">Watch Now</a>
             </li>
